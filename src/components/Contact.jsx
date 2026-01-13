@@ -60,7 +60,7 @@ const sendEmail = (e) => {
   return (
     <section id="contact" className="bg-blue-600 text-white py-16 px-6">
       <h2 className="text-3xl font-bold text-center mb-6">Contact Us</h2>
-      <p className="text-center mb-2">Phone: 0551539303 / 0562956775</p>
+      <p className="text-center mb-2">Phone: +966551539303 / +966551539303</p>
       <p className="text-center mb-8">Location: Riyadh, Kingdom of Saudi Arabia
 </p>
 
