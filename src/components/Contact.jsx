@@ -61,7 +61,8 @@ const sendEmail = (e) => {
     <section id="contact" className="bg-blue-600 text-white py-16 px-6">
       <h2 className="text-3xl font-bold text-center mb-6">Contact Us</h2>
       <p className="text-center mb-2">Phone: 0551539303 / 0562956775</p>
-      <p className="text-center mb-8">Location: Dubai, UAE</p>
+      <p className="text-center mb-8">Location: Riyadh, Kingdom of Saudi Arabia
+</p>
 
       <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
         {/* Contact Form */}
