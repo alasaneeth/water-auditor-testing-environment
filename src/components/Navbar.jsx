@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { toggleLanguage } from "../redux/languageSlice";
 import { useState } from "react";
+import Logo from "../assets/logo.svg";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +12,9 @@ function Navbar() {
     <nav className="fixed top-0 left-0 w-full z-50 bg-black text-white shadow">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         
+        {/* Logo and Title */}
         <div className="flex items-center space-x-3">
+          <img src={Logo} alt="Logo" className="w-8 h-8 md:w-10 md:h-10" />
           <h1 className="text-lg md:text-xl font-bold">
             {lang === "en" ? "Auditor Water" : "مدقق مياه"}
           </h1>
