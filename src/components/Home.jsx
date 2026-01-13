@@ -14,14 +14,14 @@ function Home() {
 
       <div className="flex justify-center gap-4 flex-wrap">
         <a
-          href="tel:+966562967775"
+          href="tel:+966551539303"
           className="bg-blue-600 text-white px-6 py-3 rounded-xl"
         >
           Call Now
         </a>
 
         <a
-          href="https://wa.me/+96655159303"
+          href="https://wa.me/+966551539303"
           className="bg-green-600 text-white px-6 py-3 rounded-xl"
         >
           WhatsApp Us
