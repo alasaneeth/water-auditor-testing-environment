@@ -13,7 +13,7 @@ function Navbar() {
           <img
             src={Logo}
             alt="Auditor Water Logo"
-            className="w-20 h-20 object-contain"
+            className="w-10 h-10 object-contain"
           />
           <h1 className="text-lg md:text-xl font-bold">
             Auditor Water | مدقق مياه

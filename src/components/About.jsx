@@ -2,7 +2,7 @@ import React from 'react'
 
 function About() {
   return (
-    <section id="about" className="py-16 px-6 max-w-5xl mx-auto">
+    <section id="about" className="py-24 px-6 max-w-5xl mx-auto">
       <h2 className="text-3xl font-bold mb-6">About Us</h2>
       <p className="mb-4">
         We are a professional Water Auditor service dedicated to helping residential buildings detect
