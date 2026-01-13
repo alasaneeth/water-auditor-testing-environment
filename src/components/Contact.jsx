@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import emailjs from "emailjs-com";
+import { useSelector } from "react-redux";
 
 function Contact() {
+  const lang = useSelector((state) => state.language.lang);
+  const isArabic = lang === "ar";
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -10,10 +14,9 @@ function Contact() {
     message: "",
   });
 
-  // Check if environment variables are loaded
-  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
-  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
-  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
@@ -27,12 +30,6 @@ function Contact() {
     setLoading(true);
     setStatus("");
 
-    // Debug: Check if env variables are loaded
-    console.log("Service ID:", serviceId);
-    console.log("Template ID:", templateId);
-    console.log("Public Key:", publicKey ? "Loaded" : "Not loaded");
-
-    // Create the template parameters object
     const templateParams = {
       to_email: "alasaneeth22@gmail.com",
       from_name: formData.name,
@@ -40,46 +37,51 @@ function Contact() {
       from_phone: formData.phone,
       from_address: formData.address,
       message: formData.message,
-      // Add these for debugging
-      subject: `New Contact Form Submission from ${formData.name}`,
+      subject: isArabic
+        ? `طلب جديد من ${formData.name}`
+        : `New Contact Form Submission from ${formData.name}`,
       reply_to: formData.email,
     };
 
     emailjs
-      .send(
-        serviceId,
-        templateId,
-        templateParams,
-        publicKey
-      )
-      .then(
-        (response) => {
-          console.log("Email sent successfully:", response);
-          setStatus("Message sent successfully!");
-          // Reset all form fields including email
-          setFormData({
-            name: "",
-            email: "",
-            phone: "",
-            address: "",
-            message: "",
-          });
-        },
-        (error) => {
-          console.error("EmailJS Error:", error);
-          setStatus(`Failed to send message. Error: ${error.text || error.message}`);
-        }
-      )
-      .finally(() => {
-        setLoading(false);
-      });
+      .send(serviceId, templateId, templateParams, publicKey)
+      .then(() => {
+        setStatus(
+          isArabic ? "تم إرسال الرسالة بنجاح!" : "Message sent successfully!"
+        );
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          address: "",
+          message: "",
+        });
+      })
+      .catch((error) => {
+        setStatus(
+          isArabic
+            ? "فشل في إرسال الرسالة"
+            : `Failed to send message. ${error.text || ""}`
+        );
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
     <section id="contact" className="bg-blue-600 text-white py-16 px-6">
-      <h2 className="text-3xl font-bold text-center mb-6">Contact Us</h2>
-      <p className="text-center mb-2">Phone: +966551539303 / +966551539303</p>
-      <p className="text-center mb-8">Location: Riyadh, Kingdom of Saudi Arabia</p>
+      <h2 className="text-3xl font-bold text-center mb-6">
+        {isArabic ? "تواصل معنا" : "Contact Us"}
+      </h2>
+
+      <p className="text-center mb-2">
+        {isArabic ? "الهاتف" : "Phone"}: +966551539303
+      </p>
+
+      <p className="text-center mb-8">
+        {isArabic
+          ? "الموقع: الرياض، المملكة العربية السعودية"
+          : "Location: Riyadh, Kingdom of Saudi Arabia"}
+      </p>
 
       <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
         {/* Contact Form */}
@@ -89,7 +91,7 @@ function Contact() {
         >
           <input
             className="w-full border p-3 rounded"
-            placeholder="Name"
+            placeholder={isArabic ? "الاسم" : "Name"}
             name="name"
             value={formData.name}
             onChange={handleChange}
@@ -98,7 +100,7 @@ function Contact() {
 
           <input
             className="w-full border p-3 rounded"
-            placeholder="Email Address"
+            placeholder={isArabic ? "البريد الإلكتروني" : "Email Address"}
             type="email"
             name="email"
             value={formData.email}
@@ -108,7 +110,7 @@ function Contact() {
 
           <input
             className="w-full border p-3 rounded"
-            placeholder="Phone Number"
+            placeholder={isArabic ? "رقم الهاتف" : "Phone Number"}
             name="phone"
             value={formData.phone}
             onChange={handleChange}
@@ -117,7 +119,7 @@ function Contact() {
 
           <input
             className="w-full border p-3 rounded"
-            placeholder="Address / Location"
+            placeholder={isArabic ? "العنوان / الموقع" : "Address / Location"}
             name="address"
             value={formData.address}
             onChange={handleChange}
@@ -125,24 +127,30 @@ function Contact() {
 
           <textarea
             className="w-full border p-3 rounded"
-            placeholder="Message / Request"
+            placeholder={isArabic ? "الرسالة / الطلب" : "Message / Request"}
             name="message"
             rows="5"
             value={formData.message}
             onChange={handleChange}
             required
-          ></textarea>
+          />
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 disabled:opacity-50"
             disabled={loading}
           >
-            {loading ? "Sending..." : "Submit"}
+            {loading
+              ? isArabic
+                ? "جاري الإرسال..."
+                : "Sending..."
+              : isArabic
+              ? "إرسال"
+              : "Submit"}
           </button>
 
           {status && (
-            <p className={`text-center font-semibold ${status.includes("successfully") ? "text-green-600" : "text-red-600"}`}>
+            <p className="text-center font-semibold text-green-600">
               {status}
             </p>
           )}
@@ -152,10 +160,9 @@ function Contact() {
         <div className="rounded-2xl overflow-hidden shadow">
           <iframe
             title="Auditor Water Location"
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14594.0216762016!2d46.7632912!3d24.7653579!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDQ1JzU1LjMiTiA0NsKwNDUnNDcuOSJF!5e0!3m2!1sen!2sae!4v1705140000000"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14594.0216762016!2d46.7632912!3d24.7653579!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!5e0"
             className="w-full h-full min-h-[350px]"
             loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
       </div>
