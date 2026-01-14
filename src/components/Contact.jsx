@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import { useSelector } from "react-redux";
-
+import ContactImage from "../assets/Backround Images/water-contact-bg.jpg"
 function Contact() {
   const lang = useSelector((state) => state.language.lang);
   const isArabic = lang === "ar";
@@ -68,7 +68,11 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="bg-blue-600 text-white py-16 px-6">
+    <section id="contact" className="py-16 px-6" 
+       style={{
+backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.60), rgba(255, 255, 255, 0.70)), url(${ContactImage})`,            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}>
       <h2 className="text-3xl font-bold text-center mb-6">
         {isArabic ? "تواصل معنا" : "Contact Us"}
       </h2>
