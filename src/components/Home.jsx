@@ -67,15 +67,8 @@ function Home() {
           >
             {isArabic ? "راسلنا واتساب" : "WhatsApp Us"}
           </a>
-
-          <a
-            href="#contact"
-            className="bg-gray-800 hover:bg-gray-900 text-white px-8 py-4 rounded-xl text-lg font-semibold transition duration-300"
-          >
-            {isArabic ? "احجز فحص" : "Book Inspection"}
-          </a>
         </div>
-
+        
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
           {features.map((item, i) => (
             <div

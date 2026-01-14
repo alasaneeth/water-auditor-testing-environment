@@ -10,6 +10,7 @@ import Services from "./components/Services";
 import WhyChooseUs from "./components/WhyChooseUs";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import FloatingButtons from "./components/FloatingButtons";
 
 export default function App() {
   const lang = useSelector((state) => state.language.lang);
@@ -75,6 +76,7 @@ export default function App() {
       <WhyChooseUs />
       <Contact />
       <Footer />
+      <FloatingButtons/>
     </div>
   );
 }
