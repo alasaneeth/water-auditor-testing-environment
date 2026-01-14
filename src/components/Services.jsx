@@ -1,10 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import leakImg from "../assets/leakImg.jpeg";
-import AuditImage from "../assets/auditImage.jpg";
-import effciantImg from "../assets/effciantImage.jpeg";
-import waterProofing from "../assets/waterproofing.jpg";
-import WaterLeaks from "../assets/waterLeaks.jpg";
+import leakImg from "../assets/serviceImage/detect_leakage.jpeg";
+import AuditImage from "../assets/serviceImage/water-audits.png";
+import effciantImg from "../assets/serviceImage/measuring-water-efficiancy.png";
+import waterProofing from "../assets/serviceImage/water-tang-surface.png";
+import WaterLeaks from "../assets/serviceImage/repair-water-leaks.png";
 import servicesBg from "../assets/Backround Images/industrial-bg.jpg"
 
 function Services() {
