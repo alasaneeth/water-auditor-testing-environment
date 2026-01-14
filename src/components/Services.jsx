@@ -1,161 +1,254 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import leakImg from "../assets/serviceImage/detect_leakage.jpeg";
-import AuditImage from "../assets/serviceImage/water-audits.png";
-import effciantImg from "../assets/serviceImage/measuring-water-efficiancy.png";
-import waterProofing from "../assets/serviceImage/water-tang-surface.png";
-import WaterLeaks from "../assets/serviceImage/repair-water-leaks.png";
+
+// Service Images
+import thermalImg from "../assets/serviceImage/themel-detect.png";
+import tankImg from "../assets/serviceImage/telecopic-inspection.png";
+import irrigationImg from "../assets/serviceImage/irrigation.png";
+import auditImg from "../assets/serviceImage/water_auding.png";
+import reportImg from "../assets/serviceImage/reporting.png";
+import repairImg from "../assets/serviceImage/repair-water-tank.png";
+
 import servicesBg from "../assets/Backround Images/industrial-bg.jpg";
 
 function Services() {
   const lang = useSelector((state) => state.language.lang);
   const isArabic = lang === "ar";
+  const [activeService, setActiveService] = useState(null);
 
   const services = isArabic
     ? [
         {
-          title: "كشف تسربات المياه في المباني السكنية",
-          image: leakImg,
+          title: "كشف التسربات الحرارية",
+          image: thermalImg,
           description:
-            "تشخيص دقيق لتسربات المياه باستخدام تقنيات متقدمة وخبرة هندسية متخصصة."
+            "تقنية التصوير الحراري المتقدمة لتحديد التسربات المخفية دون تكسير.",
+          points: [
+            "فحص شبكات المياه الداخلية",
+            "كشف تسربات الحمامات والمطابخ",
+            "تحليل الرطوبة وفقدان الحرارة",
+            "تقارير تصوير حراري عالية الدقة",
+          ],
+        },
+        {
+          title: "فحص الخزانات بالتلسكوب",
+          image: tankImg,
+          description:
+            "فحص احترافي للخزانات الأرضية والعلوية باستخدام تقنيات حديثة.",
+          points: [
+            "تصوير داخلي عالي الدقة",
+            "كشف التشققات والعيوب الهيكلية",
+            "توثيق النتائج بالصور",
+            "فحص آمن دون إتلاف",
+          ],
+        },
+        {
+          title: "فحص شبكات الري",
+          image: irrigationImg,
+          description:
+            "تحليل حراري لشبكات الري لاكتشاف التسربات وتحسين الكفاءة.",
+          points: [
+            "فحص خطوط الري والرشاشات",
+            "كشف التسربات السطحية وتحت الأرض",
+            "تحليل حرارة التربة",
+            "توصيات لتحسين الكفاءة",
+          ],
         },
         {
           title: "تدقيق استهلاك المياه",
-          image: AuditImage,
+          image: auditImg,
           description:
-            "تحليل فني شامل لاستهلاك المياه لتحديد مصادر الهدر وتحسين الكفاءة."
+            "تقييم شامل لاستهلاك المياه لتحسين الأداء وتقليل الهدر.",
+          points: [
+            "تحليل الاستهلاك",
+            "تحديد الفاقد المائي",
+            "توصيات لرفع الكفاءة",
+            "دعم أهداف ترشيد المياه",
+          ],
         },
         {
-          title: "قياس كفاءة المياه وترشيد الاستهلاك",
-          image: effciantImg,
+          title: "التقارير الفنية",
+          image: reportImg,
           description:
-            "تقييم هندسي لأداء أنظمة المياه وتقديم حلول فعالة لترشيد الاستهلاك."
+            "تقارير هندسية احترافية لدعم اتخاذ القرار وخطط الصيانة.",
+          points: [
+            "تفاصيل فنية دقيقة",
+            "صور حرارية وتلسكوبية",
+            "توصيات هندسية واضحة",
+            "تقارير ثنائية اللغة عند الطلب",
+          ],
         },
         {
-          title: "إصلاح تسربات المياه",
-          image: WaterLeaks,
+          title: "خدمات الإصلاح والعزل",
+          image: repairImg,
           description:
-            "تنفيذ أعمال إصلاح احترافية باستخدام مواد وتقنيات عالية الجودة."
-        },
-        {
-          title: "عزل الخزانات والأسطح",
-          image: waterProofing,
-          description:
-            "حلول عزل هندسية متقدمة لحماية المباني ومنع تسرب المياه."
-        },
-        {
-          title: "استشارات كفاءة المياه",
-          image: AuditImage,
-          description:
-            "تقديم استشارات تقنية مبنية على خبرة مهنية تزيد عن 20 عاماً."
+            "حلول إصلاح وعزل هندسية بخبرة تزيد عن 20 عاماً.",
+          points: [
+            "إصلاح التسربات المكتشفة",
+            "عزل الحمامات والمطابخ",
+            "أنظمة الأسطح (بيتومين، بولي يوريا، إيبوكسي)",
+            "ضمان ومواد معتمدة",
+          ],
         },
       ]
     : [
         {
-          title: "Detecting Water Leaks in Residential Buildings",
-          image: leakImg,
+          title: "Thermal Leak Detection",
+          image: thermalImg,
           description:
-            "Precise detection of water leaks using advanced technologies and engineering expertise."
+            "Advanced thermal imaging technology to identify hidden leaks without demolition.",
+          points: [
+            "Inspection of internal water networks",
+            "Leak detection in bathrooms and kitchens",
+            "Identifying heat loss and moisture patterns",
+            "High-accuracy thermal imaging reports",
+          ],
         },
         {
-          title: "Water Usage Auditing",
-          image: AuditImage,
+          title: "Telescopic Tank Inspection",
+          image: tankImg,
           description:
-            "Comprehensive technical analysis of water consumption to identify losses and inefficiencies."
+            "Specialized inspection for underground and above-ground water tanks.",
+          points: [
+            "High-resolution internal imaging",
+            "Identifying cracks and structural defects",
+            "Documented findings with visuals",
+            "Non-intrusive and safe inspection process",
+          ],
         },
         {
-          title: "Measuring Water Efficiency & Rationalization",
-          image: effciantImg,
+          title: "Irrigation Network Inspection",
+          image: irrigationImg,
           description:
-            "Engineering-based evaluation to improve system performance and reduce water waste."
+            "Thermal analysis of irrigation systems to detect leaks and inefficiencies.",
+          points: [
+            "Inspection of irrigation lines and sprinklers",
+            "Detection of surface and subsurface leaks",
+            "Soil temperature analysis",
+            "Efficiency improvement recommendations",
+          ],
         },
         {
-          title: "Repairing Water Leaks",
-          image: WaterLeaks,
+          title: "Water Auditing for Facilities",
+          image: auditImg,
           description:
-            "Professional repair solutions delivered with high-quality materials and proven techniques."
+            "Complete assessment of water consumption to improve efficiency.",
+          points: [
+            "Consumption analysis",
+            "Identifying water losses",
+            "Efficiency recommendations",
+            "Support for water-saving goals",
+          ],
         },
         {
-          title: "Tank & Surface Waterproofing",
-          image: waterProofing,
+          title: "Technical Reporting",
+          image: reportImg,
           description:
-            "Advanced waterproofing solutions designed to protect structures and prevent leakage."
+            "Professional technical reports for decision-making and maintenance planning.",
+          points: [
+            "Detailed technical findings",
+            "Thermal and telescopic images",
+            "Clear engineering recommendations",
+            "Optional bilingual reporting",
+          ],
         },
         {
-          title: "Water Efficiency Consultations",
-          image: AuditImage,
+          title: "Repair & Waterproofing Service",
+          image: repairImg,
           description:
-            "Expert technical consultations supported by more than 20 years of professional experience."
+            "Engineering-grade repair and waterproofing solutions backed by 20+ years of experience.",
+          points: [
+            "Fixing leaks identified during inspection",
+            "Bathroom & kitchen waterproofing",
+            "Roof systems: Bitumen, Polyurea, Epoxy",
+            "Warranty & certified materials",
+          ],
         },
       ];
 
   return (
     <section
       id="services"
+      dir={isArabic ? "rtl" : "ltr"}
       className="relative py-20 px-6"
       style={{
-        backgroundImage: `linear-gradient(rgba(248, 250, 252, 0.95), rgba(248, 250, 252, 0.97)), url(${servicesBg})`,
+        backgroundImage: `linear-gradient(rgba(248,250,252,0.96), rgba(248,250,252,0.98)), url(${servicesBg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-gray-800">
-            {isArabic ? "خدماتنا المتخصصة" : "Our Specialized Services"}
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+            {isArabic ? "خدمات مدقق المياه" : "Water Auditor – Services"}
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="max-w-3xl mx-auto text-gray-600 text-lg">
             {isArabic
-              ? "يقدم مدقق المياه مجموعة متكاملة من الخدمات التقنية المصممة لاكتشاف وتشخيص ومعالجة مشاكل المياه بدقة وخبرة هندسية، مدعومة بأكثر من 20 عاماً من الخبرة المهنية وباستخدام أحدث التقنيات."
-              : "Water Auditor provides a comprehensive suite of technical services designed to detect, diagnose, and resolve water-related issues with precision and engineering expertise, supported by more than 20 years of professional experience and advanced technologies."}
+              ? "مجموعة متكاملة من الخدمات الفنية لاكتشاف ومعالجة مشاكل المياه باستخدام أحدث التقنيات وخبرة هندسية طويلة."
+              : "A comprehensive suite of technical services designed to detect, diagnose, and resolve water-related issues using advanced technologies and engineering expertise."}
           </p>
         </div>
 
+        {/* Service Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, i) => (
+          {services.map((service, index) => (
             <div
-              key={i}
-              className="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+              key={index}
+              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition"
             >
-              <div className="relative overflow-hidden">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-              </div>
+              <img
+                src={service.image}
+                alt={service.title}
+                className="w-full h-56 object-cover"
+              />
 
               <div className="p-6">
-                <h3 className="font-bold text-xl mb-3 text-gray-800 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-xl font-bold mb-3 text-gray-800">
                   {service.title}
                 </h3>
                 <p className="text-gray-600 mb-4">
                   {service.description}
                 </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-blue-600 font-semibold">
-                    {isArabic ? "تفاصيل الخدمة" : "Service Details"}
-                  </span>
-                  <svg
-                    className="w-5 h-5 text-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </div>
+
+                <button
+                  onClick={() => setActiveService(service)}
+                  className="text-blue-600 font-semibold hover:underline"
+                >
+                  {isArabic ? "تفاصيل الخدمة →" : "Service Details →"}
+                </button>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Modal */}
+      {activeService && (
+        <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center px-4">
+          <div className="bg-white rounded-2xl max-w-lg w-full p-6 relative">
+            <button
+              onClick={() => setActiveService(null)}
+              className="absolute top-4 right-4 text-xl text-gray-500 hover:text-black"
+            >
+              ✕
+            </button>
+
+            <h3 className="text-2xl font-bold mb-4">
+              {activeService.title}
+            </h3>
+
+            <ul className="space-y-2 text-gray-700">
+              {activeService.points.map((point, i) => (
+                <li key={i} className="flex gap-2">
+                  <span className="text-blue-600">✔</span>
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
