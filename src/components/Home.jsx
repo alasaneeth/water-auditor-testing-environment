@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import waterBg from "../assets/Backround Images/deepsee-backround.jpg"
+import Logo from "../assets/logo.svg";
 
 function Home() {
   const lang = useSelector((state) => state.language.lang);

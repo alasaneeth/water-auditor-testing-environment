@@ -10,7 +10,7 @@ function Footer() {
       © {new Date().getFullYear()}{" "}
       {isArabic
         ? "مدقق مياه - جميع الحقوق محفوظة"
-        : "Auditor Water - All rights reserved"}
+        : "Water Auditor - All rights reserved"}
     </footer>
   );
 }

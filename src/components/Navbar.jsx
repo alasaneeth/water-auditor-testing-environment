@@ -16,7 +16,7 @@ function Navbar() {
         <div className="flex items-center space-x-3">
           <img src={Logo} alt="Logo" className="w-8 h-8 md:w-10 md:h-10" />
           <h1 className="text-lg md:text-xl font-bold">
-            {lang === "en" ? "Auditor Water" : "مدقق مياه"}
+            {lang === "en" ? "Water Auditor" : "مدقق مياه"}
           </h1>
         </div>
 

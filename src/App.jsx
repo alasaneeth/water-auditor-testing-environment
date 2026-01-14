@@ -25,7 +25,7 @@ export default function App() {
         <title>
           {isArabic
             ? "مدقق مياه | تدقيق المياه وكشف التسربات"
-            : "Auditor Water | Professional Water Audit & Leak Detection"}
+            : "Water Auditor| Professional Water Audit & Leak Detection"}
         </title>
 
         <meta
@@ -46,7 +46,7 @@ export default function App() {
           }
         />
 
-        <meta name="author" content="Auditor Water" />
+        <meta name="author" content="Water Auditor" />
         <meta property="og:type" content="website" />
 
         <meta
@@ -54,7 +54,7 @@ export default function App() {
           content={
             isArabic
               ? "مدقق مياه | خدمات كشف التسربات"
-              : "Auditor Water | Water Audit & Leak Detection"
+              : "Water Auditor | Water Audit & Leak Detection"
           }
         />
 
