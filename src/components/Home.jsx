@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import waterBg from "../assets/Backround Images/deepsee-backround.jpg"
-import Logo from "../assets/logo.svg";
+import waterBg from "../assets/Backround Images/deepsee-backround.jpg";
+import Logo from "../assets/logo.png"
 
 function Home() {
   const lang = useSelector((state) => state.language.lang);
@@ -24,15 +24,23 @@ function Home() {
   return (
     <section
       id="home"
-      className="relative bg-gray-900 text-white py-32 px-4 text-center"
+      className="relative bg-gray-900 py-14 px-4 text-center"
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${waterBg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
+        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.60), rgba(255, 255, 255, 0.70)), url(${waterBg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
       }}
     >
       <div className="max-w-6xl mx-auto relative z-10">
+
+        {/* ✅ LOGO */}
+        <img
+          src={Logo}
+          alt="Company Logo"
+          className="mx-auto mb-4 w-56 md:w-60 lg:w-60 drop-shadow-lg"
+        />
+
         <h2 className="text-4xl md:text-5xl font-bold mb-6">
           {isArabic
             ? "خدمات احترافية لتدقيق المياه وكشف التسربات"
@@ -70,8 +78,8 @@ function Home() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
           {features.map((item, i) => (
-            <div 
-              key={i} 
+            <div
+              key={i}
               className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-white/20 hover:bg-white/20 transition duration-300"
             >
               <p className="font-semibold text-lg">{item}</p>
