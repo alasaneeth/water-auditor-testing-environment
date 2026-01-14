@@ -5,7 +5,7 @@ import AuditImage from "../assets/serviceImage/water-audits.png";
 import effciantImg from "../assets/serviceImage/measuring-water-efficiancy.png";
 import waterProofing from "../assets/serviceImage/water-tang-surface.png";
 import WaterLeaks from "../assets/serviceImage/repair-water-leaks.png";
-import servicesBg from "../assets/Backround Images/industrial-bg.jpg"
+import servicesBg from "../assets/Backround Images/industrial-bg.jpg";
 
 function Services() {
   const lang = useSelector((state) => state.language.lang);
@@ -16,75 +16,87 @@ function Services() {
         {
           title: "كشف تسربات المياه في المباني السكنية",
           image: leakImg,
-          description: "استخدام أحدث التقنيات للكشف الدقيق عن التسربات"
+          description:
+            "تشخيص دقيق لتسربات المياه باستخدام تقنيات متقدمة وخبرة هندسية متخصصة."
         },
         {
           title: "تدقيق استهلاك المياه",
           image: AuditImage,
-          description: "تحليل شامل لاستهلاك المياه وتحديد مجالات التوفير"
+          description:
+            "تحليل فني شامل لاستهلاك المياه لتحديد مصادر الهدر وتحسين الكفاءة."
         },
         {
           title: "قياس كفاءة المياه وترشيد الاستهلاك",
           image: effciantImg,
-          description: "تحسين كفاءة استخدام المياه وتقليل الهدر"
+          description:
+            "تقييم هندسي لأداء أنظمة المياه وتقديم حلول فعالة لترشيد الاستهلاك."
         },
         {
           title: "إصلاح تسربات المياه",
           image: WaterLeaks,
-          description: "حلول إصلاح متكاملة باستخدام مواد عالية الجودة"
+          description:
+            "تنفيذ أعمال إصلاح احترافية باستخدام مواد وتقنيات عالية الجودة."
         },
         {
           title: "عزل الخزانات والأسطح",
           image: waterProofing,
-          description: "عزل احترافي لمنع التسربات والحفاظ على المياه"
+          description:
+            "حلول عزل هندسية متقدمة لحماية المباني ومنع تسرب المياه."
         },
         {
           title: "استشارات كفاءة المياه",
           image: AuditImage,
-          description: "تقديم حلول واستراتيجيات لتحسين كفاءة المياه"
+          description:
+            "تقديم استشارات تقنية مبنية على خبرة مهنية تزيد عن 20 عاماً."
         },
       ]
     : [
         {
           title: "Detecting Water Leaks in Residential Buildings",
           image: leakImg,
-          description: "Using latest technologies for precise leak detection"
+          description:
+            "Precise detection of water leaks using advanced technologies and engineering expertise."
         },
         {
           title: "Water Usage Auditing",
           image: AuditImage,
-          description: "Comprehensive analysis of water consumption"
+          description:
+            "Comprehensive technical analysis of water consumption to identify losses and inefficiencies."
         },
         {
           title: "Measuring Water Efficiency & Rationalization",
           image: effciantImg,
-          description: "Improving water efficiency and reducing waste"
+          description:
+            "Engineering-based evaluation to improve system performance and reduce water waste."
         },
         {
           title: "Repairing Water Leaks",
           image: WaterLeaks,
-          description: "Complete repair solutions with high-quality materials"
+          description:
+            "Professional repair solutions delivered with high-quality materials and proven techniques."
         },
         {
           title: "Tank & Surface Waterproofing",
           image: waterProofing,
-          description: "Professional waterproofing to prevent leaks"
+          description:
+            "Advanced waterproofing solutions designed to protect structures and prevent leakage."
         },
         {
           title: "Water Efficiency Consultations",
           image: AuditImage,
-          description: "Strategic solutions for water efficiency improvement"
+          description:
+            "Expert technical consultations supported by more than 20 years of professional experience."
         },
       ];
 
   return (
-    <section 
-      id="services" 
+    <section
+      id="services"
       className="relative py-20 px-6"
       style={{
         backgroundImage: `linear-gradient(rgba(248, 250, 252, 0.95), rgba(248, 250, 252, 0.97)), url(${servicesBg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
       <div className="max-w-7xl mx-auto relative z-10">
@@ -92,10 +104,10 @@ function Services() {
           <h2 className="text-4xl font-bold mb-4 text-gray-800">
             {isArabic ? "خدماتنا المتخصصة" : "Our Specialized Services"}
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            {isArabic 
-              ? "نقدم مجموعة متكاملة من خدمات المياه المدعومة بأحدث التقنيات والخبرة"
-              : "We provide a comprehensive range of water services backed by latest technology and expertise"}
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            {isArabic
+              ? "يقدم مدقق المياه مجموعة متكاملة من الخدمات التقنية المصممة لاكتشاف وتشخيص ومعالجة مشاكل المياه بدقة وخبرة هندسية، مدعومة بأكثر من 20 عاماً من الخبرة المهنية وباستخدام أحدث التقنيات."
+              : "Water Auditor provides a comprehensive suite of technical services designed to detect, diagnose, and resolve water-related issues with precision and engineering expertise, supported by more than 20 years of professional experience and advanced technologies."}
           </p>
         </div>
 
@@ -125,8 +137,18 @@ function Services() {
                   <span className="text-blue-600 font-semibold">
                     {isArabic ? "تفاصيل الخدمة" : "Service Details"}
                   </span>
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  <svg
+                    className="w-5 h-5 text-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
                   </svg>
                 </div>
               </div>
