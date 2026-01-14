@@ -1,7 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
-
 import leakImg from "../assets/leakImg.jpeg";
+import AuditImage from "../assets/auditImage.jpg"
+import effciantImg from "../assets/effciantImage.jpeg"
+import waterProofing from "../assets/waterproofing.jpg"
+import WaterLeaks from "../assets/waterLeaks.jpg"
 
 function Services() {
   const lang = useSelector((state) => state.language.lang);
@@ -15,19 +18,19 @@ function Services() {
         },
         {
           title: "تدقيق استهلاك المياه",
-          image: leakImg,
+          image: AuditImage,
         },
         {
           title: "قياس كفاءة المياه وترشيد الاستهلاك",
-          image: leakImg,
+          image: effciantImg,
         },
         {
           title: "إصلاح تسربات المياه",
-          image: leakImg,
+          image: WaterLeaks,
         },
         {
           title: "عزل الخزانات والأسطح",
-          image: leakImg,
+          image: waterProofing,
         },
       ]
     : [
@@ -37,19 +40,19 @@ function Services() {
         },
         {
           title: "Water Usage Auditing",
-          image: leakImg,
+          image: AuditImage,
         },
         {
           title: "Measuring Water Efficiency & Rationalization",
-          image: leakImg,
+          image: effciantImg,
         },
         {
           title: "Repairing Water Leaks",
-          image: leakImg,
+          image: WaterLeaks,
         },
         {
           title: "Tank & Surface Waterproofing",
-          image: leakImg,
+          image: waterProofing,
         },
       ];
 
