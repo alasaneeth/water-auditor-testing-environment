@@ -4,27 +4,11 @@ import { motion, useReducedMotion } from "framer-motion";
 import waterBg from "../assets/Backround Images/deepsee-backround.jpg";
 import Logo from "../assets/logo.png";
 
-
-
 function Home() {
   const lang = useSelector((state) => state.language.lang);
   const isArabic = lang === "ar";
   const shouldReduceMotion = useReducedMotion();
   const isDesktop = window.innerWidth >= 1024;
-
-  const features = isArabic
-    ? [
-        "كشف تسربات المياه بدقة عالية",
-        "تدقيق استهلاك المياه وكفاءتها",
-        "إصلاح التسربات وعزل الخزانات",
-        "توفير المال وتقليل هدر المياه",
-      ]
-    : [
-        "Detect water leaks accurately",
-        "Audit water usage and efficiency",
-        "Repair leaks and waterproof tanks",
-        "Save money & reduce water wastage",
-      ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -79,7 +63,10 @@ function Home() {
         />
 
         {/* Heading */}
-        <motion.h2 className="text-4xl md:text-5xl font-bold mb-6" variants={itemVariants}>
+        <motion.h2
+          className="text-4xl md:text-5xl font-bold mb-6"
+          variants={itemVariants}
+        >
           {isArabic
             ? "خدمات احترافية لتدقيق المياه وكشف التسربات"
             : "Professional Water Audit & Leak Detection Services"}
@@ -95,21 +82,28 @@ function Home() {
             : "We help residential buildings reduce water loss and improve efficiency."}
         </motion.p>
 
-        {/* Features */}
+        {/* Buttons */}
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto"
+          className="flex flex-col md:flex-row justify-center gap-6 max-w-md mx-auto"
           variants={containerVariants}
         >
-          {features.map((item, i) => (
-            <motion.div
-              key={i}
-              className="bg-white/20 backdrop-blur-sm p-6 rounded-2xl border border-white/30 shadow-md"
-              variants={itemVariants}
-              whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
-            >
-              <p className="font-semibold text-lg">{item}</p>
-            </motion.div>
-          ))}
+          <motion.a
+            href="#contact"
+            className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg transition-all duration-300"
+            variants={itemVariants}
+            whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
+          >
+            {isArabic ? "احجز فحص الآن" : "Book Inspection"}
+          </motion.a>
+
+          <motion.a
+            href="#services"
+            className="bg-white text-blue-700 hover:bg-blue-50 border border-blue-300 px-8 py-3 rounded-full font-semibold shadow transition-all duration-300"
+            variants={itemVariants}
+            whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
+          >
+            {isArabic ? "خدماتنا" : "Our Services"}
+          </motion.a>
         </motion.div>
       </motion.div>
     </motion.section>
