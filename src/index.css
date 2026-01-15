@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.motion-safe {
+  will-change: transform, opacity;
+}

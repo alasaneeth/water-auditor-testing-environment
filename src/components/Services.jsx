@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
-// Service Images
 import thermalImg from "../assets/serviceImage/themel-detect.png";
 import tankImg from "../assets/serviceImage/telecopic-inspection.png";
 import irrigationImg from "../assets/serviceImage/irrigation.png";
@@ -15,6 +14,7 @@ import servicesBg from "../assets/Backround Images/industrial-bg.jpg";
 function Services() {
   const lang = useSelector((state) => state.language.lang);
   const isArabic = lang === "ar";
+  const reduceMotion = useReducedMotion();
   const [activeService, setActiveService] = useState(null);
 
   const services = isArabic
@@ -22,73 +22,61 @@ function Services() {
         {
           title: "كشف التسربات الحرارية",
           image: thermalImg,
-          description:
-            "تقنية التصوير الحراري المتقدمة لتحديد التسربات المخفية دون تكسير.",
           points: [
             "فحص شبكات المياه الداخلية",
-            "كشف تسربات الحمامات والمطابخ",
-            "تحليل الرطوبة وفقدان الحرارة",
-            "تقارير تصوير حراري عالية الدقة",
+            "كشف التسربات دون تكسير",
+            "تحليل الرطوبة وفقدان المياه",
+            "تقارير دقيقة",
           ],
         },
         {
-          title: "فحص الخزانات بالتلسكوب",
+          title: "فحص الخزانات",
           image: tankImg,
-          description:
-            "فحص احترافي للخزانات الأرضية والعلوية باستخدام تقنيات حديثة.",
           points: [
-            "تصوير داخلي عالي الدقة",
-            "كشف التشققات والعيوب الهيكلية",
-            "توثيق النتائج بالصور",
-            "فحص آمن دون إتلاف",
+            "فحص داخلي عالي الدقة",
+            "كشف التشققات",
+            "توثيق مصور",
+            "فحص آمن",
           ],
         },
         {
           title: "فحص شبكات الري",
           image: irrigationImg,
-          description:
-            "تحليل حراري لشبكات الري لاكتشاف التسربات وتحسين الكفاءة.",
           points: [
-            "فحص خطوط الري والرشاشات",
-            "كشف التسربات السطحية وتحت الأرض",
-            "تحليل حرارة التربة",
-            "توصيات لتحسين الكفاءة",
+            "فحص خطوط الري",
+            "كشف التسربات الأرضية",
+            "تحليل التربة",
+            "تحسين الكفاءة",
           ],
         },
         {
           title: "تدقيق استهلاك المياه",
           image: auditImg,
-          description:
-            "تقييم شامل لاستهلاك المياه لتحسين الأداء وتقليل الهدر.",
           points: [
             "تحليل الاستهلاك",
-            "تحديد الفاقد المائي",
-            "توصيات لرفع الكفاءة",
-            "دعم أهداف ترشيد المياه",
+            "تحديد الهدر",
+            "توصيات تحسين",
+            "خفض التكاليف",
           ],
         },
         {
           title: "التقارير الفنية",
           image: reportImg,
-          description:
-            "تقارير هندسية احترافية لدعم اتخاذ القرار وخطط الصيانة.",
           points: [
-            "تفاصيل فنية دقيقة",
-            "صور حرارية وتلسكوبية",
-            "توصيات هندسية واضحة",
-            "تقارير ثنائية اللغة عند الطلب",
+            "تقارير هندسية",
+            "صور حرارية",
+            "توصيات واضحة",
+            "دعم فني",
           ],
         },
         {
-          title: "خدمات الإصلاح والعزل",
+          title: "الإصلاح والعزل",
           image: repairImg,
-          description:
-            "حلول إصلاح وعزل هندسية بخبرة تزيد عن 20 عاماً.",
           points: [
-            "إصلاح التسربات المكتشفة",
-            "عزل الحمامات والمطابخ",
-            "أنظمة الأسطح (بيتومين، بولي يوريا، إيبوكسي)",
-            "ضمان ومواد معتمدة",
+            "إصلاح التسربات",
+            "عزل احترافي",
+            "مواد معتمدة",
+            "ضمان جودة",
           ],
         },
       ]
@@ -96,92 +84,84 @@ function Services() {
         {
           title: "Thermal Leak Detection",
           image: thermalImg,
-          description:
-            "Advanced thermal imaging technology to identify hidden leaks without demolition.",
           points: [
-            "Inspection of internal water networks",
-            "Leak detection in bathrooms and kitchens",
-            "Identifying heat loss and moisture patterns",
-            "High-accuracy thermal imaging reports",
+            "Internal pipe inspection",
+            "Non-invasive leak detection",
+            "Moisture & heat analysis",
+            "Accurate reports",
           ],
         },
         {
-          title: "Telescopic Tank Inspection",
+          title: "Tank Inspection",
           image: tankImg,
-          description:
-            "Specialized inspection for underground and above-ground water tanks.",
           points: [
-            "High-resolution internal imaging",
-            "Identifying cracks and structural defects",
-            "Documented findings with visuals",
-            "Non-intrusive and safe inspection process",
+            "High-resolution inspection",
+            "Crack detection",
+            "Visual documentation",
+            "Safe process",
           ],
         },
         {
-          title: "Irrigation Network Inspection",
+          title: "Irrigation Inspection",
           image: irrigationImg,
-          description:
-            "Thermal analysis of irrigation systems to detect leaks and inefficiencies.",
           points: [
-            "Inspection of irrigation lines and sprinklers",
-            "Detection of surface and subsurface leaks",
-            "Soil temperature analysis",
-            "Efficiency improvement recommendations",
+            "Pipeline inspection",
+            "Underground leak detection",
+            "Soil analysis",
+            "Efficiency improvement",
           ],
         },
         {
-          title: "Water Auditing for Facilities",
+          title: "Water Auditing",
           image: auditImg,
-          description:
-            "Complete assessment of water consumption to improve efficiency.",
           points: [
             "Consumption analysis",
-            "Identifying water losses",
-            "Efficiency recommendations",
-            "Support for water-saving goals",
+            "Loss identification",
+            "Efficiency advice",
+            "Cost reduction",
           ],
         },
         {
-          title: "Technical Reporting",
+          title: "Technical Reports",
           image: reportImg,
-          description:
-            "Professional technical reports for decision-making and maintenance planning.",
           points: [
-            "Detailed technical findings",
-            "Thermal and telescopic images",
-            "Clear engineering recommendations",
-            "Optional bilingual reporting",
+            "Engineering reports",
+            "Thermal images",
+            "Clear recommendations",
+            "Professional format",
           ],
         },
         {
-          title: "Repair & Waterproofing Service",
+          title: "Repair & Waterproofing",
           image: repairImg,
-          description:
-            "Engineering-grade repair and waterproofing solutions backed by 20+ years of experience.",
           points: [
-            "Fixing leaks identified during inspection",
-            "Bathroom & kitchen waterproofing",
-            "Roof systems: Bitumen, Polyurea, Epoxy",
-            "Warranty & certified materials",
+            "Leak repairs",
+            "Professional waterproofing",
+            "Certified materials",
+            "Quality warranty",
           ],
         },
       ];
 
-  // Framer Motion Variants
-  const containerVariants = {
+  // 🔹 Optimized motion variants
+  const container = {
+    hidden: {},
+    visible: { transition: { staggerChildren: reduceMotion ? 0 : 0.12 } },
+  };
+
+  const card = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: reduceMotion ? { duration: 0.25 } : { duration: 0.45 },
+    },
+  };
+
+  const modal = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-  };
-
-  const modalVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
-    exit: { opacity: 0, scale: 0.8, transition: { duration: 0.3 } },
+    visible: { opacity: 1, transition: { duration: 0.25 } },
+    exit: { opacity: 0, transition: { duration: 0.2 } },
   };
 
   return (
@@ -195,52 +175,59 @@ function Services() {
         backgroundPosition: "center",
       }}
     >
+      {/* Header */}
       <motion.div
-        className="max-w-7xl mx-auto"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerVariants}
+        className="max-w-7xl mx-auto text-center mb-14"
+        initial={reduceMotion ? false : "hidden"}
+        whileInView={reduceMotion ? false : "visible"}
+        viewport={{ once: true, margin: "-120px" }}
+        variants={container}
       >
-        {/* Header */}
-        <motion.div className="text-center mb-16" variants={cardVariants}>
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">
-            {isArabic ? "خدمات مدقق المياه" : "Water Auditor – Services"}
-          </h2>
-          <p className="max-w-3xl mx-auto text-gray-600 text-lg">
-            {isArabic
-              ? "مجموعة متكاملة من الخدمات الفنية لاكتشاف ومعالجة مشاكل المياه باستخدام أحدث التقنيات وخبرة هندسية طويلة."
-              : "A comprehensive suite of technical services designed to detect, diagnose, and resolve water-related issues using advanced technologies and engineering expertise."}
-          </p>
-        </motion.div>
+        <motion.h2 className="text-4xl font-bold mb-4" variants={card}>
+          {isArabic ? "خدمات مدقق المياه" : "Our Services"}
+        </motion.h2>
 
-        {/* Service Cards */}
-        <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" variants={containerVariants}>
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition"
-              variants={cardVariants}
-              whileHover={{ scale: 1.05 }}
-            >
-              <img
-                src={service.image}
-                alt={service.title}
-                className="w-full h-56 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-3 text-gray-800">{service.title}</h3>
-                <p className="text-gray-600 mb-4">{service.description}</p>
-                <button
-                  onClick={() => setActiveService(service)}
-                  className="text-blue-600 font-semibold hover:underline"
-                >
-                  {isArabic ? "تفاصيل الخدمة →" : "Service Details →"}
-                </button>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+        <motion.p className="max-w-3xl mx-auto text-gray-600 text-lg" variants={card}>
+          {isArabic
+            ? "خدمات فنية متكاملة لاكتشاف ومعالجة مشاكل المياه"
+            : "Comprehensive technical services for water inspection and efficiency"}
+        </motion.p>
+      </motion.div>
+
+      {/* Cards */}
+      <motion.div
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+        initial={reduceMotion ? false : "hidden"}
+        whileInView={reduceMotion ? false : "visible"}
+        viewport={{ once: true, margin: "-120px" }}
+        variants={container}
+      >
+        {services.map((service, i) => (
+          <motion.div
+            key={i}
+            variants={card}
+            className="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100"
+            whileHover={reduceMotion ? {} : { scale: 1.03 }}
+          >
+            <img
+              src={service.image}
+              alt={service.title}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-52 object-cover"
+            />
+
+            <div className="p-6">
+              <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+              <button
+                onClick={() => setActiveService(service)}
+                className="text-blue-600 font-semibold hover:underline"
+              >
+                {isArabic ? "تفاصيل الخدمة →" : "Service Details →"}
+              </button>
+            </div>
+          </motion.div>
+        ))}
       </motion.div>
 
       {/* Modal */}
@@ -248,15 +235,15 @@ function Services() {
         {activeService && (
           <motion.div
             className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center px-4"
-            variants={modalVariants}
+            variants={modal}
             initial="hidden"
             animate="visible"
             exit="exit"
           >
-            <motion.div className="bg-white rounded-2xl max-w-lg w-full p-6 relative" variants={modalVariants}>
+            <motion.div className="bg-white rounded-2xl max-w-lg w-full p-6 relative">
               <button
                 onClick={() => setActiveService(null)}
-                className="absolute top-4 right-4 text-xl text-gray-500 hover:text-black"
+                className="absolute top-4 right-4 text-xl"
               >
                 ✕
               </button>
@@ -264,10 +251,10 @@ function Services() {
               <h3 className="text-2xl font-bold mb-4">{activeService.title}</h3>
 
               <ul className="space-y-2 text-gray-700">
-                {activeService.points.map((point, i) => (
+                {activeService.points.map((p, i) => (
                   <li key={i} className="flex gap-2">
                     <span className="text-blue-600">✔</span>
-                    {point}
+                    {p}
                   </li>
                 ))}
               </ul>

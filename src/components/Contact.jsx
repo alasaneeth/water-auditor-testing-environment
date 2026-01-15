@@ -3,10 +3,14 @@ import emailjs from "emailjs-com";
 import { useSelector } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
 import ContactImage from "../assets/Backround Images/water-contact-bg.jpg";
+import { useReducedMotion } from "framer-motion";
+import { getMotionProps } from "../utils/motionConfig";
 
 function Contact() {
   const lang = useSelector((state) => state.language.lang);
   const isArabic = lang === "ar";
+  const reduce = useReducedMotion();
+
 
   const [formData, setFormData] = useState({
     name: "",
@@ -33,7 +37,6 @@ function Contact() {
     setStatus("");
 
     const templateParams = {
-      to_email: "alasaneeth22@gmail.com",
       from_name: formData.name,
       from_email: formData.email,
       from_phone: formData.phone,
@@ -90,6 +93,8 @@ function Contact() {
       whileInView="visible"
       viewport={{ once: true }}
       variants={containerVariants}
+      {...getMotionProps(reduce)}
+
     >
       {/* Header */}
       <motion.div className="text-center mb-6" variants={itemVariants}>

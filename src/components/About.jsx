@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import aboutBg from "../assets/Backround Images/audit-bg.jpg";
+import { useReducedMotion } from "framer-motion";
+import { getMotionProps } from "../utils/motionConfig";
 
 function About() {
   const lang = useSelector((state) => state.language.lang);
@@ -22,6 +24,8 @@ function About() {
     },
   };
 
+  const reduce = useReducedMotion();
+
   return (
     <motion.section
       id="about"
@@ -36,6 +40,7 @@ function About() {
       whileInView="visible"
       viewport={{ once: true }}
       variants={containerVariants}
+      {...getMotionProps(reduce)}
     >
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Title */}
