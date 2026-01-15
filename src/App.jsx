@@ -1,27 +1,25 @@
 // App.jsx
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import About from "./components/About";
-import Services from "./components/Services";
-import WhyChooseUs from "./components/WhyChooseUs";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
 import FloatingButtons from "./components/FloatingButtons";
+
+// Lazy load other components
+const Home = lazy(() => import("./components/Home"));
+const About = lazy(() => import("./components/About"));
+const Services = lazy(() => import("./components/Services"));
+const WhyChooseUs = lazy(() => import("./components/WhyChooseUs"));
+const Contact = lazy(() => import("./components/Contact"));
+const Footer = lazy(() => import("./components/Footer"));
 
 export default function App() {
   const lang = useSelector((state) => state.language.lang);
-
   const isArabic = lang === "ar";
 
   return (
-    <div
-      className="font-sans text-gray-800"
-      dir={isArabic ? "rtl" : "ltr"}
-    >
+    <div className="font-sans text-gray-800" dir={isArabic ? "rtl" : "ltr"}>
       <Helmet>
         <title>
           {isArabic
@@ -46,10 +44,8 @@ export default function App() {
               : "Water Audit, Leak Detection, Water Efficiency, Tank Waterproofing"
           }
         />
-
         <meta name="author" content="Water Auditor" />
         <meta property="og:type" content="website" />
-
         <meta
           property="og:title"
           content={
@@ -58,7 +54,6 @@ export default function App() {
               : "Water Auditor | Water Audit & Leak Detection"
           }
         />
-
         <meta
           property="og:description"
           content={
@@ -70,13 +65,17 @@ export default function App() {
       </Helmet>
 
       <Navbar />
-      <Home />
-      <About />
-      <Services />
-      <WhyChooseUs />
-      <Contact />
-      <Footer />
-      <FloatingButtons/>
+      
+      <Suspense fallback={<div className="text-center py-20">Loading...</div>}>
+        <Home />
+        <About />
+        <Services />
+        <WhyChooseUs />
+        <Contact />
+        <Footer />
+      </Suspense>
+
+      <FloatingButtons />
     </div>
   );
 }
