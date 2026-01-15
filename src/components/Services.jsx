@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Service Images
 import thermalImg from "../assets/serviceImage/themel-detect.png";
@@ -166,6 +167,23 @@ function Services() {
         },
       ];
 
+  // Framer Motion Variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
+  const modalVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
+    exit: { opacity: 0, scale: 0.8, transition: { duration: 0.3 } },
+  };
+
   return (
     <section
       id="services"
@@ -177,9 +195,15 @@ function Services() {
         backgroundPosition: "center",
       }}
     >
-      <div className="max-w-7xl mx-auto">
+      <motion.div
+        className="max-w-7xl mx-auto"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+      >
         {/* Header */}
-        <div className="text-center mb-16">
+        <motion.div className="text-center mb-16" variants={cardVariants}>
           <h2 className="text-4xl font-bold text-gray-800 mb-4">
             {isArabic ? "خدمات مدقق المياه" : "Water Auditor – Services"}
           </h2>
@@ -188,29 +212,25 @@ function Services() {
               ? "مجموعة متكاملة من الخدمات الفنية لاكتشاف ومعالجة مشاكل المياه باستخدام أحدث التقنيات وخبرة هندسية طويلة."
               : "A comprehensive suite of technical services designed to detect, diagnose, and resolve water-related issues using advanced technologies and engineering expertise."}
           </p>
-        </div>
+        </motion.div>
 
         {/* Service Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" variants={containerVariants}>
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={index}
               className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition"
+              variants={cardVariants}
+              whileHover={{ scale: 1.05 }}
             >
               <img
                 src={service.image}
                 alt={service.title}
                 className="w-full h-56 object-cover"
               />
-
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-3 text-gray-800">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  {service.description}
-                </p>
-
+                <h3 className="text-xl font-bold mb-3 text-gray-800">{service.title}</h3>
+                <p className="text-gray-600 mb-4">{service.description}</p>
                 <button
                   onClick={() => setActiveService(service)}
                   className="text-blue-600 font-semibold hover:underline"
@@ -218,37 +238,43 @@ function Services() {
                   {isArabic ? "تفاصيل الخدمة →" : "Service Details →"}
                 </button>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Modal */}
-      {activeService && (
-        <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center px-4">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-6 relative">
-            <button
-              onClick={() => setActiveService(null)}
-              className="absolute top-4 right-4 text-xl text-gray-500 hover:text-black"
-            >
-              ✕
-            </button>
+      <AnimatePresence>
+        {activeService && (
+          <motion.div
+            className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center px-4"
+            variants={modalVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <motion.div className="bg-white rounded-2xl max-w-lg w-full p-6 relative" variants={modalVariants}>
+              <button
+                onClick={() => setActiveService(null)}
+                className="absolute top-4 right-4 text-xl text-gray-500 hover:text-black"
+              >
+                ✕
+              </button>
 
-            <h3 className="text-2xl font-bold mb-4">
-              {activeService.title}
-            </h3>
+              <h3 className="text-2xl font-bold mb-4">{activeService.title}</h3>
 
-            <ul className="space-y-2 text-gray-700">
-              {activeService.points.map((point, i) => (
-                <li key={i} className="flex gap-2">
-                  <span className="text-blue-600">✔</span>
-                  {point}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
+              <ul className="space-y-2 text-gray-700">
+                {activeService.points.map((point, i) => (
+                  <li key={i} className="flex gap-2">
+                    <span className="text-blue-600">✔</span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
